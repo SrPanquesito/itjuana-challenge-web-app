@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="submit()" [ngClass]="formOptions.formClass">
+    <section *ngFor="let field of formFields">
+        <app-custom-form-input
+        [field]="field"
+        [form]="form"
+        [showErrors]="showErrors"
+        (onEnter)="submit()"
+        ></app-custom-form-input>
+    </section>
+    <ng-container *ngIf="externalErrorMessage">
+        <ng-container [ngTemplateOutlet]="externalErrorMessage.templateRef"></ng-container>
+    </ng-container>
+    <ng-container>
+        <button type="submit" [disabled]="formOptions.disable" class="btn-dark">Log-in</button>
+    </ng-container>
+</form>

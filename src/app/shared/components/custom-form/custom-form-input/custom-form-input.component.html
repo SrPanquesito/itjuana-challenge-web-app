@@ -1,0 +1,57 @@
+<section [formGroup]="form">
+    <label [attr.for]="field.key" class="text-slate-700 dark:text-slate-200 text-sm font-medium">{{ field.label }}</label>
+  
+    <section [ngSwitch]="field.controlType">
+      <ng-container *ngSwitchCase="'textbox'">
+        <div class="relative mt-2">
+          <input
+            class="w-full text-tiny rounded-lg text-slate-700 bg-slate-100 dark:text-slate-400 dark:bg-plaeto-dark-300 border placeholder:text-slate-500 border-slate-300 dark:border-slate-600"
+            autocomplete="off"
+            [ngClass]="applyInputClasses()"
+            [formControlName]="field.key"
+            [id]="field.key"
+            [type]="field.type"
+            [placeholder]="field.placeholder"
+            [appBlockTyping]="form.get(field.key)?.errors?.['maxlength']"
+            (keydown.enter)="keydownEnter($event)"
+            />
+          <i class="absolute top-3 right-3 opacity-75 select-none transition-all"
+            (click)="field.key === 'password' ? seePasswordToggle() : null"
+            [ngClass]="applyIconClasses()"
+          ></i>
+        </div>
+      </ng-container>
+  
+      <ng-container *ngSwitchCase="'dropdown'">
+        <select
+          [id]="field.key"
+          [formControlName]="field.key"
+        >
+          <option *ngFor="let opt of field.options" [value]="opt.key">
+            {{ opt.value }}
+          </option>
+        </select>
+      </ng-container>
+  
+      <ng-container *ngSwitchCase="'checkbox'">
+        <input
+          type="checkbox"
+          [id]="field.key"
+          [name]="field.key"
+          [formControlName]="field.key"
+        />
+      </ng-container>
+    </section>
+  
+    <ng-container *ngIf="hasFieldError() && showErrors">
+      <span *ngIf="form.get(field.key)?.errors?.['pattern']" class="text-xs text-red-600 pt-2 pl-1">
+        Please provide a valid {{ field.key }}.
+      </span>
+      <span *ngIf="form.get(field.key)?.errors?.['minlength']" class="text-xs text-red-600 pt-2 pl-1">
+        {{ field.key | uppercaseLetter: 0 }} must be at least {{ form.get(field.key)?.errors?.['minlength'].requiredLength }} characters long.
+      </span>
+      <span *ngIf="form.get(field.key)?.errors?.['maxlength']" class="text-xs text-red-600 pt-2 pl-1">
+        {{ field.key | uppercaseLetter: 0 }} must have maximum {{ form.get(field.key)?.errors?.['maxlength'].requiredLength }} characters long.
+      </span>
+    </ng-container>
+</section>
