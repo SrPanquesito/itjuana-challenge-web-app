@@ -1,1 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    ::-webkit-scrollbar {
+        width: 0.4rem;
+        height: 0.4rem;
+        padding: 0px;
+        margin: 0px;
+    }
+    ::-webkit-scrollbar-track {
+        @apply bg-transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+        @apply bg-slate-800 dark:bg-slate-500 rounded-full;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-slate-800 dark:bg-slate-500;
+    }
+    ::-webkit-scrollbar-corner {
+        @apply bg-transparent
+    }
+
+    .hidden-scrollbar {
+        overflow-y: scroll;
+        overflow-x: auto;
+        -webkit-background-clip: text;
+        transition: background-color .5s;
+        @apply bg-slate-50 dark:bg-slate-800
+    }
+    .hidden-scrollbar:hover {
+        @apply bg-slate-100 dark:bg-slate-900
+    }
+    .hidden-scrollbar::-webkit-scrollbar-thumb {
+        background-color: inherit;
+    }
+
+    body {
+        @apply font-roboto
+    }
+
+    strong {
+        @apply font-bold text-4xl
+    }
+    small {
+        @apply text-xs
+    }
+    h1 {
+        @apply font-bold text-3xl
+    }
+    h2 {
+        @apply font-semibold text-2xl
+    }
+    h3 {
+        @apply font-semibold text-xl
+    }
+    h4 {
+        @apply font-semibold text-lg
+    }
+}
+
+@layer components {
+}
