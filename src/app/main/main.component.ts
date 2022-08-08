@@ -4,8 +4,8 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-main',
   template: `
     <section class="h-screen bg-slate-100 dark:bg-slate-900">
-      <div class="flex flex-col justify-start h-full w-full overflow-auto">
-        <p class="text-slate-900 dark:text-slate-200">Main Works? </p>
+      <div class="flex flex-col justify-center items-center h-full w-full overflow-auto">
+        <router-outlet></router-outlet>
       </div>
     </section>
   `,

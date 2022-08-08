@@ -6,6 +6,12 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent,
+    children: [
+      {
+        path: 'create',
+        loadChildren: () => import('./screen-create/screen-create.module').then(m => m.ScreenCreateModule)
+      }
+    ]
   }
 ];
 
