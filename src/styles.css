@@ -85,7 +85,7 @@
 
 @layer components {
     .btn-dark {
-        @apply rounded-lg bg-slate-700 text-stone-200 active:bg-slate-800 disabled:bg-slate-800 disabled:text-stone-500 dark:bg-slate-600 dark:text-stone-200 dark:active:bg-slate-700 dark:disabled:bg-slate-700 dark:disabled:text-stone-500
+        @apply rounded-lg bg-slate-700 text-stone-200 active:bg-slate-800 disabled:bg-slate-800 disabled:text-gray-500 dark:bg-slate-600 dark:text-gray-200 dark:active:bg-slate-700 dark:disabled:bg-slate-700 dark:disabled:text-gray-500
     }
 
     .btn-delete {

@@ -57,6 +57,7 @@ export class ScreenCreateComponent implements OnInit {
   onSubmitForm(form: any) {
     if (!this.processingRequest) {
       this.processingRequest = true;
+      this.formOptions.disable = true;
       this.createUser(form);
     }
   }
@@ -65,14 +66,16 @@ export class ScreenCreateComponent implements OnInit {
     this._ScreenCreateService.createUser(payload)
     .pipe(
       first(),
-      finalize(() => this.processingRequest = false)
+      finalize(() => {
+        this.processingRequest = false;
+        this.formOptions.disable = false;
+      })
     )
     .subscribe({
       next: res => {
-        setTimeout(() => {this._router.navigate(['view-list'])}, 500);
+        this._router.navigate(['main','view-list'])
       },
       error: err => {
-        console.warn(err);
         this.requestErrorMessage = err?.networkError?.name === "HttpErrorResponse" ? "Couldn't connect to server." : err;
       }
     });

@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center w-full gap-3">
         <h3 class="dark:text-gray-300">User List</h3>
     </div>
-    <div class="w-full bg-gray-50 rounded-lg shadow-tiny dark:bg-gray-800 px-6 pt-3 pb-6 max-h-[24vh] overflow-auto">
+    <div class="w-full bg-gray-50 rounded-lg shadow-tiny dark:bg-gray-800 px-6 pt-3 pb-6 max-h-[50vh] overflow-auto">
         <ng-container *ngIf="!connectionError; else showConnectionError">
             <ng-container *ngIf="!processingRequest; else showProcessingRequest">
                 <table class="w-full">
