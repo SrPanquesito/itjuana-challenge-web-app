@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ScreenUpdateRoutingModule } from './screen-update-routing.module';
-import { ScreenUpdateComponent } from './screen-update.component';
-
+import { ScreenUpdateComponent } from './container/screen-update.component';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { ScreenUpdateComponent } from './screen-update.component';
   ],
   imports: [
     CommonModule,
-    ScreenUpdateRoutingModule
+    ScreenUpdateRoutingModule,
+    SharedModule
   ]
 })
 export class ScreenUpdateModule { }

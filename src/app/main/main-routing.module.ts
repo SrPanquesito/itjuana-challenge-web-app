@@ -10,6 +10,14 @@ const routes: Routes = [
       {
         path: 'create',
         loadChildren: () => import('./screen-create/screen-create.module').then(m => m.ScreenCreateModule)
+      },
+      {
+        path: 'view-list',
+        loadChildren: () => import('./screen-view-list/screen-view-list.module').then(m => m.ScreenViewListModule)
+      },
+      {
+        path: 'update',
+        loadChildren: () => import('./screen-update/screen-update.module').then(m => m.ScreenUpdateModule)
       }
     ]
   }
