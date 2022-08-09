@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs';
+import { first, finalize } from 'rxjs';
 import { ScreenViewListService } from '../screen-view-list.service';
+import { UserInterface } from '../screen-view-list.service';
 
 @Component({
   selector: 'app-screen-view-list',
@@ -9,12 +10,35 @@ import { ScreenViewListService } from '../screen-view-list.service';
   ]
 })
 export class ScreenViewListComponent implements OnInit {
+  public processingRequest = false;
+  public connectionError = false;
+
+  public users: Array<UserInterface> = new Array();
 
   constructor(private _ScreenViewListService: ScreenViewListService) { }
 
   ngOnInit(): void {
-    // this._ScreenViewListService.getUsers().pipe(first())
-    // .subscribe(r => console.log(r))
+    if (!this.processingRequest) {
+      this.processingRequest = true;
+      this.getUsers();
+    }
+  }
+
+  getUsers() {
+    this._ScreenViewListService.getUsers()
+    .pipe(
+      first(),
+      finalize(() => this.processingRequest = false)
+    )
+    .subscribe({
+      next: r => {
+        this.users = r;
+      },
+      error: err => {
+        console.warn(err);
+        this.connectionError = true;
+      }
+    })
   }
 
 }

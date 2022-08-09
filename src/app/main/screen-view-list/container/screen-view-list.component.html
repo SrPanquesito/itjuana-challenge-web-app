@@ -1,1 +1,49 @@
-<p>screen-view-list works!</p>
+<div class="container flex flex-col justify-center items-center gap-6 w-full md:w-9/12 xl:w-5/12 h-full transition-all overflow-auto">
+    <div class="flex flex-col items-center w-full gap-3">
+        <h3 class="dark:text-gray-300">User List</h3>
+    </div>
+    <div class="w-full bg-gray-50 rounded-lg shadow-tiny dark:bg-gray-800 px-6 pt-3 pb-6 max-h-[24vh] overflow-auto">
+        <ng-container *ngIf="!connectionError; else showConnectionError">
+            <ng-container *ngIf="!processingRequest; else showProcessingRequest">
+                <table class="w-full">
+                    <thead>
+                        <tr>
+                            <th class="text-start">First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="users.length > 0; else showNoUsers">
+                        <tr *ngFor="let user of users">
+                            <td> {{ user.firstname }} </td>
+                            <td> {{ user.lastname }} </td>
+                            <td> {{ user.email }} </td>
+                            <td class="flex flex-col md:flex-row justify-center gap-2">
+                                <button type="button" class="btn-delete">Delete</button>
+                                <button type="button" class="btn-update">Update</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <ng-template #showNoUsers>
+                        <tr>
+                            <td>
+                                <span class="text-xs text-gray-500">No users found.</span>    
+                            </td>
+                        </tr>
+                    </ng-template>
+                </table>
+            </ng-container>
+            <ng-template #showProcessingRequest>
+                <div class="flex justify-center items-center w-full h-20">
+                    <span class="text-xs text-gray-500">Fetching data...</span>
+                </div>
+            </ng-template>
+        </ng-container>
+        <ng-template #showConnectionError>
+            <div class="flex justify-center items-center w-full h-20">
+                <span class="text-xs text-gray-500"><u class="decoration-red-400 dark:decoration-red-800">Error</u>: Unable to connect to the server.</span>
+            </div>
+        </ng-template>
+    </div>
+</div>

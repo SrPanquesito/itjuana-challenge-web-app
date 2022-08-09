@@ -17,10 +17,10 @@
         @apply bg-transparent;
     }
     ::-webkit-scrollbar-thumb {
-        @apply bg-slate-800 dark:bg-slate-500 rounded-full;
+        @apply bg-slate-300 dark:bg-slate-700 rounded-full;
     }
     ::-webkit-scrollbar-thumb:hover {
-        @apply bg-slate-800 dark:bg-slate-500;
+        @apply bg-slate-300 dark:bg-slate-700;
     }
     ::-webkit-scrollbar-corner {
         @apply bg-transparent
@@ -68,6 +68,19 @@
         line-height: unset !important;
         vertical-align: -12%;
     }
+
+    /* For table */
+    
+    th {
+        @apply text-sm border-b p-2 text-slate-500 border-b-slate-200 dark:border-b-slate-600
+    }
+    tr td:first-child {
+        @apply text-start
+    }
+    td {
+        @apply text-sm text-center pt-4 text-slate-400 dark:text-slate-500
+    }
+    
 }
 
 @layer components {
@@ -75,7 +88,14 @@
         @apply rounded-lg bg-slate-700 text-stone-200 active:bg-slate-800 disabled:bg-slate-800 disabled:text-stone-500 dark:bg-slate-600 dark:text-stone-200 dark:active:bg-slate-700 dark:disabled:bg-slate-700 dark:disabled:text-stone-500
     }
 
+    .btn-delete {
+        @apply px-3 py-2 rounded-lg transition-all hover:opacity-90 shadow-tiny bg-red-500 text-white active:bg-red-600 dark:bg-red-600 dark:text-gray-200 dark:active:bg-red-700
+    }
+
+    .btn-update {
+        @apply px-3 py-2 rounded-lg transition-all hover:opacity-90 shadow-tiny bg-cyan-500 text-white active:bg-cyan-600 dark:bg-cyan-600 dark:text-gray-200 dark:active:bg-cyan-700}
+
     .input-dark {
-        @apply rounded-lg border text-slate-700 bg-slate-100 placeholder:text-slate-500 border-slate-300 dark:text-slate-400 dark:placeholder:text-slate-600 dark:bg-gray-800 dark:border-slate-600
+        @apply rounded-lg border text-slate-700 bg-white placeholder:text-slate-500 border-slate-300 dark:text-slate-400 dark:placeholder:text-slate-600 dark:bg-gray-800 dark:border-slate-600
     }
 }
