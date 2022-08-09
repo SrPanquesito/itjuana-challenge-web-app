@@ -50,7 +50,7 @@ export class CustomFormInputComponent implements OnInit {
       return 'focus:border-red-500 focus:ring-red-500 dark:focus:border-red-500 dark:focus:ring-red-500'
     }
     else {
-      return 'dark:focus:ring-slate-600 dark:focus:border-slate-600'
+      return 'focus:border-slate-200 focus:ring-slate-200 dark:focus:ring-slate-600 dark:focus:border-slate-600'
     }
   }
 

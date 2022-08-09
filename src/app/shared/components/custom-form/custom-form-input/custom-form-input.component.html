@@ -1,11 +1,11 @@
 <section [formGroup]="form">
-    <label [attr.for]="field.key" class="text-slate-700 dark:text-slate-200 text-sm font-medium">{{ field.label }}</label>
+    <label [attr.for]="field.key" class="text-slate-700 dark:text-gray-400 text-sm font-medium">{{ field.label }}</label>
   
     <section [ngSwitch]="field.controlType">
       <ng-container *ngSwitchCase="'textbox'">
         <div class="relative mt-2">
           <input
-            class="w-full text-tiny rounded-lg text-slate-700 bg-slate-100 dark:text-slate-400 dark:bg-plaeto-dark-300 border placeholder:text-slate-500 border-slate-300 dark:border-slate-600"
+            class="w-full text-tiny input-dark"
             autocomplete="off"
             [ngClass]="applyInputClasses()"
             [formControlName]="field.key"

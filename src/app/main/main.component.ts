@@ -3,10 +3,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-main',
   template: `
-    <section class="h-screen bg-slate-100 dark:bg-slate-900">
-      <div class="flex flex-col justify-center items-center h-full w-full overflow-auto">
+    <section class="h-screen w-full bg-slate-100 dark:bg-slate-900">
         <router-outlet></router-outlet>
-      </div>
     </section>
   `,
   styles: [

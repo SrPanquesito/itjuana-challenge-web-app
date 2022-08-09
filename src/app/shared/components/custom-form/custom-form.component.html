@@ -10,7 +10,7 @@
     <ng-container *ngIf="externalErrorMessage">
         <ng-container [ngTemplateOutlet]="externalErrorMessage.templateRef"></ng-container>
     </ng-container>
-    <ng-container>
-        <button type="submit" [disabled]="formOptions.disable" class="btn-dark">Log-in</button>
+    <ng-container *ngIf="formOptions.submitShow">
+        <button type="submit" [disabled]="formOptions.disable" class="btn-dark text-sm py-3 mt-4">{{ formOptions.submitText || "Log-in" }}</button>
     </ng-container>
 </form>

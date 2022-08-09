@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ScreenCreateRoutingModule } from './screen-create-routing.module';
 import { ScreenCreateComponent } from './container/screen-create.component';
-
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { ScreenCreateComponent } from './container/screen-create.component';
   ],
   imports: [
     CommonModule,
-    ScreenCreateRoutingModule
+    ScreenCreateRoutingModule,
+    SharedModule
   ]
 })
 export class ScreenCreateModule { }
