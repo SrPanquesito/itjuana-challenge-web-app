@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormOptions, FormInputBase, FormTextbox } from '@app/shared/components/custom-form/custom-form';
+import { finalize, first } from 'rxjs';
+import { ScreenCreateService, CreateUserInterface } from '../screen-create.service';
 
 @Component({
   selector: 'app-screen-create',
@@ -10,6 +12,8 @@ import { FormOptions, FormInputBase, FormTextbox } from '@app/shared/components/
   ]
 })
 export class ScreenCreateComponent implements OnInit {
+  private processingRequest = false;
+  public requestErrorMessage = '';
 
   public formOptions: FormOptions = {
     formClass: "flex flex-col gap-6",
@@ -45,13 +49,32 @@ export class ScreenCreateComponent implements OnInit {
     }),
   ];
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private _ScreenCreateService: ScreenCreateService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmitForm(e: any) {
-    // Petition to BE
+  onSubmitForm(form: any) {
+    if (!this.processingRequest) {
+      this.processingRequest = true;
+      this.createUser(form);
+    }
   }
 
+  createUser(payload: CreateUserInterface) {
+    this._ScreenCreateService.createUser(payload)
+    .pipe(
+      first(),
+      finalize(() => this.processingRequest = false)
+    )
+    .subscribe({
+      next: res => {
+        setTimeout(() => {this._router.navigate(['view-list'])}, 500);
+      },
+      error: err => {
+        console.warn(err);
+        this.requestErrorMessage = err?.networkError?.name === "HttpErrorResponse" ? "Couldn't connect to server." : err;
+      }
+    });
+  }
 }
