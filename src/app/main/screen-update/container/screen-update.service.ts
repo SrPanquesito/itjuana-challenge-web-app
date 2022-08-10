@@ -15,4 +15,9 @@ export class ScreenUpdateService {
     const path = "/api/user/";
     return this._HttpClient.get<UserInterface>(env.api_url + path + id);
   }
+
+  updateUser(user: UserInterface): Observable<any> {
+    const path = "/api/user";
+    return this._HttpClient.put<any>(env.api_url + path, user);
+  }
 }

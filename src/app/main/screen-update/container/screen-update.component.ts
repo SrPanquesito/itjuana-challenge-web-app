@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormOptions, FormInputBase, FormTextbox } from '@app/shared/components/custom-form/custom-form';
 import { finalize, first } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { ScreenUpdateService } from './screen-update.service';
 
 @Component({
   selector: 'app-screen-update',
@@ -51,7 +52,7 @@ export class ScreenUpdateComponent implements OnInit {
     }),
   ];
 
-  constructor(private _router: Router, private _route: ActivatedRoute) { }
+  constructor(private _router: Router, private _route: ActivatedRoute, private _ScreenUpdateService: ScreenUpdateService) { }
 
   ngOnInit(): void {
     this._route.params.pipe(first())
@@ -79,6 +80,22 @@ export class ScreenUpdateComponent implements OnInit {
   }
 
   updateUser(payload: any) {
+    this._ScreenUpdateService.updateUser({ id: this.user.id, ...payload})
+    .pipe(
+      first(),
+      finalize(() => {
+        this.processingRequest = false;
+        this.formOptions.disable = false;
+      })
+    )
+    .subscribe({
+      next: res => {
+        this._router.navigate(['main','view-list'])
+      },
+      error: err => {
+        this.requestErrorMessage = err?.networkError?.name === "HttpErrorResponse" ? "Couldn't connect to server." : err;
+      }
+    });
   }
 
 }
