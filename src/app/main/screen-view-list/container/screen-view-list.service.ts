@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment as env } from '@environments/environment';
+import { UserInterface } from '@app/shared/interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,4 @@ export class ScreenViewListService {
     const path = "/api/user";
     return this._HttpClient.get<Array<UserInterface>>(env.api_url + path);
   }
-}
-
-export interface UserInterface {
-  id: number,
-  firstname: string,
-  lastname: string,
-  email: string
 }

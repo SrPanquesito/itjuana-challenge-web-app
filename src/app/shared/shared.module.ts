@@ -6,14 +6,16 @@ import { BlockTypingDirective } from './directives/block-typing.directive';
 import { UppercaseLetterPipe } from './pipes/uppercase-letter.pipe';
 import { CustomFormComponent } from './components/custom-form/custom-form.component';
 import { CustomFormInputComponent } from './components/custom-form/custom-form-input/custom-form-input.component';
+import { NavbarFloatComponent } from './components/navbar-float/navbar-float.component';
 
 @NgModule({
   declarations: [
     UiDarkmodeButtonComponent,
-    BlockTypingDirective,
-    UppercaseLetterPipe,
     CustomFormComponent,
     CustomFormInputComponent,
+    NavbarFloatComponent,
+    BlockTypingDirective,
+    UppercaseLetterPipe,
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { CustomFormInputComponent } from './components/custom-form/custom-form-i
   exports: [
     UiDarkmodeButtonComponent,
     CustomFormComponent,
+    NavbarFloatComponent,
     BlockTypingDirective,
     UppercaseLetterPipe,
   ]

@@ -14,4 +14,7 @@
             </ng-template>
         </ng-container>
     </app-custom-form>
+    <ng-container *ngIf="!user">
+        <span class="text-xs text-red-600 pt-2 pl-1"> Please provide a valid user id on the route path. </span>
+    </ng-container>
 </div>

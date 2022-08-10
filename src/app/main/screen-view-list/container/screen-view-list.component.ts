@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { first, finalize } from 'rxjs';
-import { ScreenViewListService } from '../screen-view-list.service';
-import { UserInterface } from '../screen-view-list.service';
+import { ScreenViewListService } from './screen-view-list.service';
+import { UserInterface } from '@app/shared/interfaces/user';
 
 @Component({
   selector: 'app-screen-view-list',

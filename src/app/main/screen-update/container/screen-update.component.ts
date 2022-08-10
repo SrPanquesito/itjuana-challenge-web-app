@@ -3,6 +3,7 @@ import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormOptions, FormInputBase, FormTextbox } from '@app/shared/components/custom-form/custom-form';
 import { finalize, first } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-screen-update',
@@ -13,6 +14,8 @@ import { finalize, first } from 'rxjs';
 export class ScreenUpdateComponent implements OnInit {
   private processingRequest = false;
   public requestErrorMessage = '';
+
+  public user: any;
 
   public formOptions: FormOptions = {
     formClass: "flex flex-col gap-6",
@@ -48,10 +51,24 @@ export class ScreenUpdateComponent implements OnInit {
     }),
   ];
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.warn(this.myForm[0].value = 'Si');
+    this._route.params.pipe(first())
+    .subscribe({
+      next: res => {
+        if(this._route.snapshot?.data['user']) { 
+          this.user = this._route.snapshot.data['user'];
+          this.myForm[0].value = this.user.firstname;
+          this.myForm[1].value = this.user.lastname;
+          this.myForm[2].value = this.user.email;
+        }
+        else {
+          this.user = null;
+          this.formOptions.disable = true;
+        }
+      }
+    });
   }
 
   onSubmitForm(form: any) {

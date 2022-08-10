@@ -3,7 +3,8 @@ import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormOptions, FormInputBase, FormTextbox } from '@app/shared/components/custom-form/custom-form';
 import { finalize, first } from 'rxjs';
-import { ScreenCreateService, CreateUserInterface } from '../screen-create.service';
+import { ScreenCreateService } from './screen-create.service';
+import { UserInterface } from '@app/shared/interfaces/user';
 
 @Component({
   selector: 'app-screen-create',
@@ -62,7 +63,7 @@ export class ScreenCreateComponent implements OnInit {
     }
   }
 
-  createUser(payload: CreateUserInterface) {
+  createUser(payload: UserInterface) {
     this._ScreenCreateService.createUser(payload)
     .pipe(
       first(),

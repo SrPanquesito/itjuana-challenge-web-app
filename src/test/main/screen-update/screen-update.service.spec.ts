@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ScreenUpdateService } from '@app/main/screen-update/screen-update.service';
+import { ScreenUpdateService } from '@app/main/screen-update/container/screen-update.service';
 
 describe('ScreenUpdateService', () => {
   let service: ScreenUpdateService;

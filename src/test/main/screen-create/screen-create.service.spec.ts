@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ScreenCreateService } from '@app/main/screen-create/screen-create.service';
+import { ScreenCreateService } from '@app/main/screen-create/container/screen-create.service';
 
 describe('ScreenCreateService', () => {
   let service: ScreenCreateService;
