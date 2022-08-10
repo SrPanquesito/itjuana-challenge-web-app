@@ -15,4 +15,9 @@ export class ScreenViewListService {
     const path = "/api/user";
     return this._HttpClient.get<Array<UserInterface>>(env.api_url + path);
   }
+
+  deleteUser(id: string): Observable<any> {
+    const path = "/api/user/";
+    return this._HttpClient.delete<any>(env.api_url + path + id);
+  }
 }

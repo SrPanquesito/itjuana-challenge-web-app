@@ -63,7 +63,7 @@ export class ScreenCreateComponent implements OnInit {
     }
   }
 
-  createUser(payload: UserInterface) {
+  createUser(payload: Partial<UserInterface>) {
     this._ScreenCreateService.createUser(payload)
     .pipe(
       first(),

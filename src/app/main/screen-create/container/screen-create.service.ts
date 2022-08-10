@@ -11,7 +11,7 @@ export class ScreenCreateService {
 
   constructor(private _HttpClient: HttpClient) { }
 
-  createUser(payload: UserInterface): Observable<any> {
+  createUser(payload: Partial<UserInterface>): Observable<any> {
     const path = "/api/user";
     return this._HttpClient.post<any>(env.api_url + path, payload);
   }

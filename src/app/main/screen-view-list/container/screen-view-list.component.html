@@ -24,8 +24,8 @@
                                 </div>
                             </td>
                             <td class="flex flex-col md:flex-row justify-center gap-2">
-                                <button type="button" class="btn-delete">Delete</button>
-                                <button type="button" class="btn-update">Update</button>
+                                <button type="button" class="btn-delete" [id]="'btn_delete_' + user.id" (click)="disableUserButton(user.id); deleteUser(user.id)">Delete</button>
+                                <button type="button" class="btn-update" [id]="'btn_update_' + user.id" (click)="disableUserButton(user.id); goToUpdate('update', user.id)">Update</button>
                             </td>
                         </tr>
                     </tbody>
