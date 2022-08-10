@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  api_url: "https://itjuana.uc.r.appspot.com",
+  api_url: "https://itjuana-challenge-rest-api-dot-itjuana.uc.r.appspot.com",
   production: false
 };
 
